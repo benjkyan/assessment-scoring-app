@@ -1,0 +1,65 @@
+:root {
+  --border: #ddd;
+  --bg-alt: #fafafa;
+  --accent: #2b6cb0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  color: #1a1a1a;
+}
+
+header { margin-bottom: 1.5rem; }
+.subtitle { color: #666; font-size: 0.9rem; }
+
+#dashboard {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: var(--bg-alt);
+}
+
+.domain-total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+
+.domain {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.domain > h3 {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: var(--bg-alt);
+  cursor: pointer;
+}
+
+.subdomain { padding: 0.5rem 1rem 1rem 1.5rem; }
+.subdomain h4 { margin: 0.5rem 0; color: var(--accent); }
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.skill-row .skill-desc { flex: 1; }
+.skill-row .skill-examples { display: block; color: #888; font-size: 0.8rem; }
+
+select.score-input {
+  width: 4rem;
+}

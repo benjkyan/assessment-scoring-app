@@ -1,0 +1,108 @@
+{
+  "instrument": "Sample Skill Catalog",
+  "domains": [
+    {
+      "id": "COMM",
+      "name": "Communication",
+      "subdomains": [
+        {
+          "id": "COMM-EXP",
+          "name": "Expressive Language",
+          "skills": [
+            {
+              "id": "SC-COMM-1",
+              "description": "Requests a preferred item using a single word or sign",
+              "examples": "Says or signs \"juice\" to request juice at snack time"
+            },
+            {
+              "id": "SC-COMM-2",
+              "description": "Combines two words to form a simple request",
+              "examples": "\"More juice\", \"go outside\""
+            },
+            {
+              "id": "SC-COMM-3",
+              "description": "Answers a simple wh- question about a shared activity",
+              "examples": "Answers \"what color?\" while pointing at an object"
+            }
+          ]
+        },
+        {
+          "id": "COMM-REC",
+          "name": "Receptive Language",
+          "skills": [
+            {
+              "id": "SC-COMM-4",
+              "description": "Follows a one-step direction involving a familiar object",
+              "examples": "\"Give me the ball\""
+            },
+            {
+              "id": "SC-COMM-5",
+              "description": "Follows a two-step direction",
+              "examples": "\"Pick up the cup and put it on the table\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PLAY",
+      "name": "Play",
+      "subdomains": [
+        {
+          "id": "PLAY-SOL",
+          "name": "Solitary Play",
+          "skills": [
+            {
+              "id": "SC-PLAY-1",
+              "description": "Engages with a single toy appropriately for at least one minute",
+              "examples": "Stacks blocks, rolls a car back and forth"
+            },
+            {
+              "id": "SC-PLAY-2",
+              "description": "Transitions independently between two play activities",
+              "examples": "Moves from blocks to a puzzle without prompting"
+            }
+          ]
+        },
+        {
+          "id": "PLAY-SOC",
+          "name": "Social Play",
+          "skills": [
+            {
+              "id": "SC-PLAY-3",
+              "description": "Takes turns with a peer during a simple game",
+              "examples": "Rolls a ball back and forth, waits for a turn in a board game"
+            },
+            {
+              "id": "SC-PLAY-4",
+              "description": "Initiates a play interaction with a peer",
+              "examples": "Invites another child to play by name or gesture"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SELF",
+      "name": "Self-Care",
+      "subdomains": [
+        {
+          "id": "SELF-EAT",
+          "name": "Eating",
+          "skills": [
+            {
+              "id": "SC-SELF-1",
+              "description": "Uses a spoon to self-feed without spilling most of the bite",
+              "examples": "Eats cereal or yogurt with a spoon"
+            },
+            {
+              "id": "SC-SELF-2",
+              "description": "Pours liquid from a small pitcher into a cup",
+              "examples": "Pours water from a child-sized pitcher"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
