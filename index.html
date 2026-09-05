@@ -9,13 +9,13 @@
 <body>
   <header>
     <h1 id="instrument-name">Assessment Scoring App</h1>
-    <p class="subtitle">Client-agnostic scoring engine — loaded from <code>data/sample-catalog.json</code></p>
+    <p class="subtitle">Proof of concept for a client assessment scoring engine. Sample prompts loaded from <code>data/sample-catalog.json</code></p>
   </header>
 
   <main>
     <section id="client-screen" hidden>
       <h2>Open a client</h2>
-      <p class="note">Records are saved in this browser only — nothing leaves the machine.</p>
+      <p class="note">Client records are saved in the browser's local storage.</p>
 
       <ul id="client-list"></ul>
       <p id="client-list-empty" class="note" hidden>No clients yet.</p>
@@ -50,11 +50,17 @@
           <label for="assessment-label">Name</label>
           <input id="assessment-label" type="text" autocomplete="off" placeholder="e.g. Intake — Spring 2026" />
         </div>
+        <button id="export-csv" type="button">Export CSV</button>
         <span id="assessment-meta"></span>
       </div>
 
       <section id="dashboard">
         <h2>Dashboard</h2>
+        <p class="note">
+          <strong>Applicable</strong> counts only the items you scored; items left on
+          &ldquo;&ndash;&rdquo; are excluded. <strong>Total</strong> counts every item in the
+          instrument.
+        </p>
         <div id="domain-totals"></div>
       </section>
 

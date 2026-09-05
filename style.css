@@ -140,6 +140,21 @@ header { margin-bottom: 1.5rem; }
 
 #assessment-bar input:disabled { background: var(--bg-alt); }
 
+#export-csv {
+  font: inherit;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+
+#export-csv:disabled {
+  color: #aaa;
+  background: var(--bg-alt);
+  cursor: default;
+}
+
 #assessment-meta {
   color: #888;
   font-size: 0.8rem;
@@ -156,10 +171,83 @@ header { margin-bottom: 1.5rem; }
   background: var(--bg-alt);
 }
 
+#dashboard .note {
+  margin: -0.25rem 0 0.75rem;
+}
+
 .domain-total-row {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
   padding: 0.25rem 0;
+}
+
+/* The name holds one line; the figures take the slack and wrap under
+   themselves on narrow screens rather than pushing out of the panel. */
+.domain-total-name {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.domain-total-row.grand-total {
+  border-top: 1px solid var(--border);
+  margin-top: 0.35rem;
+  padding-top: 0.5rem;
+  font-weight: 600;
+}
+
+.domain-total-figures {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 0.15rem 1rem;
+  min-width: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.domain-total-figures > span {
+  white-space: nowrap;
+}
+
+.domain-total-figures .applicable {
+  color: var(--accent);
+}
+
+.domain-total-figures .overall {
+  color: #666;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+/* Stoplight chip. Colours come from the ramp in app.js; everything that makes
+   it a chip lives here. The min-width keeps 8% and 100% the same width so the
+   right edge of the column stays straight. */
+.domain-total-figures .pct {
+  display: inline-block;
+  min-width: 3.1rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.domain-total-figures .pct-none {
+  background: #f0f0f0;
+  color: #999;
+}
+
+/* The "of everything in the instrument" figure is context, not the headline,
+   so it stays plain text rather than competing with the chip. */
+.domain-total-figures .pct-plain {
+  min-width: 0;
+  padding: 0;
+  background: none;
+  font-weight: inherit;
+  opacity: 0.75;
 }
 
 .domain {
@@ -191,6 +279,71 @@ header { margin-bottom: 1.5rem; }
 .skill-row .skill-desc { flex: 1; }
 .skill-row .skill-examples { display: block; color: #888; font-size: 0.8rem; }
 
+/* Inline background/colour per value is set in app.js (see scoreStyle); the
+   shape is here. */
 select.score-input {
   width: 4rem;
+  padding: 0.25rem 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+select.score-input:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+/* REACHING THIS POINT IS TRANSITIONS */
+
+/* --- transitions: hover and focus feedback --- */
+select.score-input {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease,
+    color 0.15s ease;
+}
+select.score-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.18);
+  outline: none;
+}
+
+.skill-row {
+  transition: background-color 0.15s ease;
+}
+.skill-row:hover {
+  background-color: #f6f9fc;
+}
+
+.domain > h3 {
+  transition: background-color 0.15s ease;
+}
+.domain > h3:hover {
+  background-color: #f0f0f0;
+}
+
+.client-button {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.client-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* --- keyframes: entrance --- */
+@keyframes fade-slide-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#catalog .domain,
+#client-screen {
+  animation: fade-slide-in 0.25s ease both;
+}
+
+/* --- respect motion preferences --- */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
