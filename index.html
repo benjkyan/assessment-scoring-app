@@ -13,14 +13,56 @@
   </header>
 
   <main>
-    <section id="dashboard">
-      <h2>Dashboard</h2>
-      <div id="domain-totals"></div>
+    <section id="client-screen" hidden>
+      <h2>Open a client</h2>
+      <p class="note">Records are saved in this browser only — nothing leaves the machine.</p>
+
+      <ul id="client-list"></ul>
+      <p id="client-list-empty" class="note" hidden>No clients yet.</p>
+
+      <form id="new-client-form">
+        <input
+          id="new-client-name"
+          type="text"
+          placeholder="Client initials or case number"
+          autocomplete="off"
+          required
+        />
+        <button type="submit">Add client</button>
+      </form>
     </section>
 
-    <section id="catalog"></section>
+    <section id="assessment-screen" hidden>
+      <div id="client-bar">
+        <div>
+          <span class="bar-label">Client</span>
+          <strong id="active-client-name"></strong>
+        </div>
+        <button id="switch-client" type="button">Switch client</button>
+      </div>
+
+      <div id="assessment-bar">
+        <div class="field">
+          <label for="assessment-select">Assessment</label>
+          <select id="assessment-select"></select>
+        </div>
+        <div class="field grow">
+          <label for="assessment-label">Name</label>
+          <input id="assessment-label" type="text" autocomplete="off" placeholder="e.g. Intake — Spring 2026" />
+        </div>
+        <span id="assessment-meta"></span>
+      </div>
+
+      <section id="dashboard">
+        <h2>Dashboard</h2>
+        <div id="domain-totals"></div>
+      </section>
+
+      <section id="catalog"></section>
+    </section>
   </main>
 
+  <script src="store.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
