@@ -175,19 +175,23 @@ header { margin-bottom: 1.5rem; }
   margin: -0.25rem 0 0.75rem;
 }
 
+/* Name and figures sit side by side while they both fit, and the figures drop
+   to their own line when they don't. Wrapping is what keeps this honest at
+   phone widths: without it the name box shrinks below the width of its own
+   longest word and the word paints over the figures. */
 .domain-total-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  gap: 0.75rem;
+  gap: 0.15rem 0.75rem;
   padding: 0.25rem 0;
 }
 
-/* The name holds one line; the figures take the slack and wrap under
-   themselves on narrow screens rather than pushing out of the panel. */
 .domain-total-name {
-  flex: 0 1 auto;
+  flex: 1 1 auto;
   min-width: 0;
+  overflow-wrap: anywhere; /* a domain name longer than the panel still wraps */
 }
 
 .domain-total-row.grand-total {
@@ -346,4 +350,99 @@ select.score-input:focus {
 /* --- respect motion preferences --- */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
+}
+
+/* --- phones -----------------------------------------------------------
+   Scoring happens on a tablet or phone in the room, so the narrow layout is
+   a real working view, not a courtesy. Two things matter here: nothing may
+   overflow sideways, and every control has to be thumb-sized. */
+
+@media (max-width: 560px) {
+  body {
+    padding: 1rem 0.75rem;
+  }
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.2rem; }
+
+  /* Every row stacks, not just the ones whose name happens to be long enough
+     to force it — a mix of stacked and inline rows reads as broken. Once the
+     figures are on their own line, left-aligning keeps them with the name
+     they belong to. */
+  .domain-total-figures {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+  }
+
+  .domain-total-row {
+    padding: 0.4rem 0;
+  }
+
+  .domain-total-row + .domain-total-row {
+    border-top: 1px solid #ececec;
+  }
+
+  #dashboard,
+  .subdomain {
+    padding: 0.75rem;
+  }
+
+  .domain > h3 {
+    padding: 0.6rem 0.75rem;
+    font-size: 1.05rem;
+  }
+
+  /* The score control stacks under its prompt and stretches, so it stays an
+     easy target without squeezing the skill text into a column of one-word
+     lines. */
+  .skill-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.6rem 0;
+  }
+
+  .skill-row .skill-desc {
+    flex: 1 1 100%;
+  }
+
+  select.score-input {
+    width: 100%;
+    min-height: 2.75rem;
+    text-align: left;
+  }
+
+  /* Bars and the new-client form go one control per line rather than
+     three cramped ones. */
+  #client-bar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  #assessment-bar .field,
+  #assessment-bar .field.grow {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  #assessment-bar select,
+  #assessment-bar input,
+  #export-csv,
+  #switch-client {
+    min-height: 2.75rem;
+  }
+
+  #export-csv {
+    flex: 1 1 100%;
+  }
+
+  #new-client-form {
+    flex-wrap: wrap;
+  }
+
+  #new-client-form input,
+  #new-client-form button {
+    flex: 1 1 100%;
+    min-height: 2.75rem;
+  }
 }
